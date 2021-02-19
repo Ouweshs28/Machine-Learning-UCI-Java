@@ -15,8 +15,6 @@ public class UCI_Main {
             double avgAcc = 0;
             Utility u = new Utility();
             fileArray = u.chooseMenu();
-
-
             NeuralNetwork neuralNetwork = new NeuralNetwork(rate);
             //Training Perceptrons
             u.setTraindata(u.readFile(fileArray[0]));
@@ -60,16 +58,16 @@ public class UCI_Main {
     }
 
     /**
-     * @param confMat
-     * @param ml
-     * @param u
+     * @param confMat the confusion matrix
+     * @param nn Neural Network
+     * @param utility Utility that contains data
      * @return
      */
-    public static double[] trainAccuracy(int[][] confMat, NeuralNetwork ml, Utility u) {
+    public static double[] trainAccuracy(int[][] confMat, NeuralNetwork nn, Utility utility) {
         //Calculating the accuracy of the training data
         int trainTrueVals = 0;
         int trainTotal = 0;
-        confMat = ml.testFunction(u.getTraindata());
+        confMat = nn.testFunction(utility.getTraindata());
         double[] finalTrainAcc = new double[confMat.length];
         for (int i = 0; i < confMat.length; i++) {
         //Accuracy is calculated using the confusion matrix formula = (tp + tn) / (tp + tn + fp + fn)
@@ -81,11 +79,17 @@ public class UCI_Main {
         return finalTrainAcc;
     }
 
-    public static double[] testAccuracy(int[][] confMat, NeuralNetwork ml, Utility u) {
+    /**
+     * @param confMat the confusion matrix
+     * @param nn Neural Network
+     * @param utility Utility that contains data
+     * @return
+     */
+    public static double[] testAccuracy(int[][] confMat, NeuralNetwork nn, Utility utility) {
         //Calculating the accuracy of the test data
         int testTrueVals = 0;
         int testTotal = 0;
-        confMat = ml.testFunction(u.getTestdata());
+        confMat = nn.testFunction(utility.getTestdata());
         double[] finalTestAcc = new double[confMat.length];
         for (int i = 0; i < confMat.length; i++) {
         //Accuracy is calculated using the confusion matrix formula = (tp + tn) / (tp + tn + fp + fn)

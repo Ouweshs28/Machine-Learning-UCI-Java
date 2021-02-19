@@ -3,12 +3,11 @@ import java.io.DataInputStream;
 import java.io.FileInputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Scanner;
 
 public class Utility {
-     private int[][] traindata;
-     private  int[][] testdata;
+    private int[][] traindata;
+    private int[][] testdata;
 
     public int[][] getTraindata() {
         return traindata;
@@ -32,7 +31,7 @@ public class Utility {
      * @param fileName
      * @return
      */
-    public  int[][] readFile(String fileName) {
+    public int[][] readFile(String fileName) {
         //Reading data from file
         ArrayList<String> arrReadCSV = new ArrayList<String>();
         try {
@@ -72,43 +71,44 @@ public class Utility {
         int results = 0;
         for (int row = 0; row < 10; row++) {
             for (int column = row + 1; column < 10; column++) {
-                label[results++] = new String("{" + row + ", " + column + "}");
+                label[results++] = "{" + row + ", " + column + "}";
             }
         }
         return label;
     }
 
-    public  String[] chooseMenu() {
+    public String[] chooseMenu() {
         Scanner input = new Scanner(System.in);
         String[] fileArray = new String[2];
-        int userInput=3;
-        while (userInput>2) {
+        int userInput = 3;
+        while (userInput > 2) {
             System.out.print("Welcome please make a selection:\n" +
                     "0. Exit the program\n" +
                     "1. Run first fold test\n" +
-                    "2. Run second fold test\n");
-            userInput=input.nextInt();
+                    "2. Run second fold test\n" +
+                    "Make a choice:");
+            userInput = input.nextInt();
 
-                switch (userInput) {
-                    case 0:
-                        System.out.print("Exiting");
-                        System.exit(0);
-                        break;
-                    case 1:
-                        fileArray[0] = "cw2DataSet1.csv";
-                        fileArray[1] = "cw2DataSet2.csv";
-                        break;
-                    case 2:
-                        fileArray[1] = "cw2DataSet1.csv";
-                        fileArray[0] = "cw2DataSet2.csv";
-                        break;
+            switch (userInput) {
+                case 0:
+                    System.out.print("Exiting");
+                    System.exit(0);
+                    break;
+                case 1:
+                    fileArray[0] = "cw2DataSet1.csv";
+                    fileArray[1] = "cw2DataSet2.csv";
+                    break;
+                case 2:
+                    fileArray[1] = "cw2DataSet1.csv";
+                    fileArray[0] = "cw2DataSet2.csv";
+                    break;
 
-                    default:
-                        System.out.println("Choose a correct input please");
-                        break;
-                }
-
+                default:
+                    System.out.println("Choose a correct input please");
+                    break;
             }
+
+        }
         return fileArray;
     }
 }
