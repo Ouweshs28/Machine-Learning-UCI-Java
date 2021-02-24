@@ -6,7 +6,7 @@ public class UCI_Main {
         // Learning rate
 
         while (true) {
-            double rate = Double.valueOf(0.5);
+            double rate = Double.valueOf(0.1);
             double finalEp = 0;
             double sumTstAcc = 0;
             double testFnlAccuracy = 0;
@@ -61,7 +61,7 @@ public class UCI_Main {
      * @param confMat the confusion matrix
      * @param nn Neural Network
      * @param utility Utility that contains data
-     * @return
+     * @return the final training accuracy
      */
     public static double[] trainAccuracy(int[][] confMat, NeuralNetwork nn, Utility utility) {
         //Calculating the accuracy of the training data

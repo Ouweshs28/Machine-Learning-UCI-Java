@@ -99,8 +99,8 @@ public class Utility {
                     fileArray[1] = "cw2DataSet2.csv";
                     break;
                 case 2:
-                    fileArray[1] = "cw2DataSet1.csv";
                     fileArray[0] = "cw2DataSet2.csv";
+                    fileArray[1] = "cw2DataSet1.csv";
                     break;
 
                 default:
